@@ -1,25 +1,24 @@
 package com.example.amirkalif;
 
 public class Musician {
-    private String firstName;
-    private String lastName;
-    private String imageFile;
+    private final String name;
+    private final int imageResId;
 
-    public Musician(String firstName, String lastName, String imageFile) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.imageFile = imageFile;
+    public Musician(String name, int imageResId) {
+        this.name = name;
+        this.imageResId = imageResId;
     }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public String getImageFile() { return imageFile; }
-    public void setImageFile(String imageFile) { this.imageFile = imageFile; }
+    public String getName() {
+        return name;
+    }
+
+    public int getImageResId() {
+        return imageResId;
+    }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName;
+        return name;
     }
 }

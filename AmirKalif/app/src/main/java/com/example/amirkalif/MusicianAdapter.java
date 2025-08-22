@@ -4,28 +4,41 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class MusicianAdapter extends ArrayAdapter<Musician> {
+public class MusicianAdapter extends BaseAdapter {
+    private final List<Musician> data;
+    private final LayoutInflater inflater;
 
     public MusicianAdapter(Context context, List<Musician> data) {
-        super(context, 0, data);
+        this.data = data;
+        this.inflater = LayoutInflater.from(context);
     }
 
-    static class ViewHolder {
-        ImageView imgIcon;
-        TextView tvName;
+    @Override
+    public int getCount() {
+        return data.size();
+    }
+
+    @Override
+    public Musician getItem(int position) {
+        return data.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+            convertView = inflater.inflate(R.layout.list_item, parent, false);
             holder = new ViewHolder();
             holder.imgIcon = convertView.findViewById(R.id.imgIcon);
             holder.tvName = convertView.findViewById(R.id.tvName);
@@ -34,17 +47,15 @@ public class MusicianAdapter extends ArrayAdapter<Musician> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Musician current = getItem(position);
-        if (current != null) {
-            holder.tvName.setText(current.toString());
-            int imgId = getContext().getResources().getIdentifier(
-                    current.getImageFile(), "drawable", getContext().getPackageName());
-            if (imgId != 0) {
-                holder.imgIcon.setImageResource(imgId);
-            } else {
-                holder.imgIcon.setImageResource(R.drawable.placeholder);
-            }
-        }
+        Musician musician = getItem(position);
+        holder.tvName.setText(musician.getName());
+        holder.imgIcon.setImageResource(musician.getImageResId());
+
         return convertView;
+    }
+
+    private static class ViewHolder {
+        ImageView imgIcon;
+        TextView tvName;
     }
 }

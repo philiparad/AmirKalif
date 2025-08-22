@@ -6,6 +6,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Simple splash screen that navigates to the main list.
+ */
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -15,8 +18,7 @@ public class SplashActivity extends AppCompatActivity {
 
         Button btnEnter = findViewById(R.id.btnEnter);
         btnEnter.setOnClickListener(v -> {
-            Intent i = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(i);
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         });
     }

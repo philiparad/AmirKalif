@@ -27,24 +27,18 @@ public class MainActivity extends AppCompatActivity {
         lstMusician = findViewById(R.id.lstMusician);
 
         band = new ArrayList<>();
-        band.add(new Musician("Freddie", "Mercury", "freddie_mercury"));
-        band.add(new Musician("Brian", "May", "brian_may"));
-        band.add(new Musician("Roger", "Taylor", "roger_taylor"));
-        band.add(new Musician("John", "Deacon", "john_deacon"));
+        band.add(new Musician("Freddie Mercury", R.drawable.freddie_mercury));
+        band.add(new Musician("Brian May", R.drawable.brian_may));
+        band.add(new Musician("Roger Taylor", R.drawable.roger_taylor));
+        band.add(new Musician("John Deacon", R.drawable.john_deacon));
 
         adapter = new MusicianAdapter(this, band);
         lstMusician.setAdapter(adapter);
 
         lstMusician.setOnItemClickListener((parent, view, position, id) -> {
             Musician selected = band.get(position);
-            tvName.setText(selected.toString());
-            int imgId = getResources().getIdentifier(
-                    selected.getImageFile(), "drawable", getPackageName());
-            if (imgId != 0) {
-                imgPhoto.setImageResource(imgId);
-            } else {
-                imgPhoto.setImageResource(R.drawable.placeholder);
-            }
+            tvName.setText(selected.getName());
+            imgPhoto.setImageResource(selected.getImageResId());
         });
     }
 }
