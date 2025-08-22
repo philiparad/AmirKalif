@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AmirKalif</string>
-    <string name="student_name">Philip Arad</string>
+    <string name="student_name">Amir Kalif</string>
     <string name="enter_button_text">Enter</string>
     <string name="queen_logo_desc">Queen Logo</string>
     <string name="member_photo">Member Photo</string>
