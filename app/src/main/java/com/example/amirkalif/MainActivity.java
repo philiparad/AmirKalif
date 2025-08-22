@@ -1,6 +1,8 @@
 package com.example.amirkalif;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         imgPhoto = findViewById(R.id.imgPhoto);
         tvName = findViewById(R.id.tvName);
         lstMusician = findViewById(R.id.lstMusician);
+        ImageButton btnBack = findViewById(R.id.btnBack);
 
         band = new ArrayList<>();
         band.add(new Musician("Freddie Mercury", R.drawable.freddie_mercury));
@@ -38,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new MusicianAdapter(this, band);
         lstMusician.setAdapter(adapter);
+
+        btnBack.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SplashActivity.class));
+            finish();
+        });
 
         lstMusician.setOnItemClickListener((parent, view, position, id) -> {
             Musician selected = band.get(position);
