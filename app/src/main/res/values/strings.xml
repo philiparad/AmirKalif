@@ -7,4 +7,5 @@
     <string name="selected_member_photo">Selected Member Photo</string>
     <string name="choose_member">Select a member</string>
     <string name="queen_header">QUEEN</string>
+    <string name="back_button_desc">Back to main screen</string>
 </resources>
