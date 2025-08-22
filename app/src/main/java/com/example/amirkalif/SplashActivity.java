@@ -16,6 +16,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         Button btnEnter = findViewById(R.id.btnEnter);
         btnEnter.setOnClickListener(v -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
