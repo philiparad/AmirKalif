@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         imgPhoto = findViewById(R.id.imgPhoto);
         tvName = findViewById(R.id.tvName);
         lstMusician = findViewById(R.id.lstMusician);
