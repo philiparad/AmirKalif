@@ -1,0 +1,7 @@
+# Gradle build files
+.gradle/
+build/
+**/build/
+
+# Local configuration
+local.properties
